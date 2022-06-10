@@ -54,7 +54,7 @@ contract Campaign {
         request.recipient = recipient;
     }
 
-    function approveRequesg(uint index) public {
+    function approveRequest(uint index) public {
         Request storage request = requests[index];
         require(approvers[msg.sender], "Action restricted to approvers!");
         require(!request.approvals[msg.sender], "You already approved this request.");
