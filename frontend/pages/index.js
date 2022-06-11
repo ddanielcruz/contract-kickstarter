@@ -1,13 +1,29 @@
-import { useEffect, useState } from 'react'
+import { Card, Button } from 'semantic-ui-react'
+import Layout from '../components/Layout'
 
 import factory from '../services/factory'
 
-export default function Home() {
-  const [campaigns, setCampaigns] = useState([])
+export default function Home({ campaigns }) {
+  const renderCampaigns = () => {
+    const items = campaigns.map((address) => ({
+      header: address,
+      description: <a href="#">View Campaign</a>,
+      fluid: true
+    }))
 
-  useEffect(() => {
-    factory.methods.getDeployedCampaigns().call().then(setCampaigns)
-  }, [])
+    return <Card.Group items={items} />
+  }
 
-  return <div />
+  return (
+    <Layout>
+      <h3>Open Campaigns</h3>
+      <Button content="Create Campaign" icon="add circle" primary floated="right" />
+      {renderCampaigns()}
+    </Layout>
+  )
+}
+
+Home.getInitialProps = async () => {
+  const campaigns = await factory.methods.getDeployedCampaigns().call()
+  return { campaigns }
 }
