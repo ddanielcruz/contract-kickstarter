@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Card, Button } from 'semantic-ui-react'
 import Layout from '../components/Layout'
 
@@ -17,7 +18,11 @@ export default function Home({ campaigns }) {
   return (
     <Layout>
       <h3>Open Campaigns</h3>
-      <Button content="Create Campaign" icon="add circle" primary floated="right" />
+      <Link href="/campaigns/new">
+        <a>
+          <Button content="Create Campaign" icon="add circle" primary floated="right" />
+        </a>
+      </Link>
       {renderCampaigns()}
     </Layout>
   )
