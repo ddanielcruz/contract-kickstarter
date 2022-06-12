@@ -1,4 +1,5 @@
-import { Card, Grid } from 'semantic-ui-react'
+import Link from 'next/link'
+import { Button, Card, Grid } from 'semantic-ui-react'
 
 import ContributeForm from '../../../components/ContributeForm'
 import Layout from '../../../components/Layout'
@@ -51,10 +52,21 @@ export default function Campaign({
     <Layout>
       <h3>Campaign Details</h3>
       <Grid>
-        <Grid.Column width={12}>{renderCards()}</Grid.Column>
-        <Grid.Column width={4}>
-          <ContributeForm address={address} />
-        </Grid.Column>
+        <Grid.Row>
+          <Grid.Column width={12}>{renderCards()}</Grid.Column>
+          <Grid.Column width={4}>
+            <ContributeForm address={address} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <Link href={`/campaigns/${address}/requests`}>
+              <a>
+                <Button primary>View Requests</Button>
+              </a>
+            </Link>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </Layout>
   )
