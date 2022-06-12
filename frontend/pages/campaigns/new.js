@@ -12,7 +12,7 @@ export default function CampaignNew() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const handleSubmit = async (ev) => {
+  const handleSubmit = async ev => {
     ev.preventDefault()
     setErrorMessage('')
     setIsLoading(true)
@@ -28,7 +28,7 @@ export default function CampaignNew() {
     }
   }
 
-  const handleChange = (ev) => {
+  const handleChange = ev => {
     const value = ev.target.value.replace(/\D/g, '')
     setMinimumContribution(value)
   }
@@ -42,7 +42,7 @@ export default function CampaignNew() {
           <label htmlFor="value">Minimum Contribution</label>
           <Input
             id="value"
-            label="Wei"
+            label="wei"
             labelPosition="right"
             value={minimumContribution}
             onChange={handleChange}

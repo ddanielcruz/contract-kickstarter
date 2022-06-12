@@ -6,9 +6,13 @@ import factory from '../services/factory'
 
 export default function Home({ campaigns }) {
   const renderCampaigns = () => {
-    const items = campaigns.map((address) => ({
+    const items = campaigns.map(address => ({
       header: address,
-      description: <a href="#">View Campaign</a>,
+      description: (
+        <Link href={`/campaigns/${address}`}>
+          <a>View Campaign</a>
+        </Link>
+      ),
       fluid: true
     }))
 
